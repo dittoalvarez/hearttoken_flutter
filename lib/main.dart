@@ -1,20 +1,53 @@
+import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/material.dart';
-import 'package:heart_token/constants.dart';
-import 'screens/welcome/welcome_screen.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+}
 
-class Myapp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  // const ({ Key? key }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner:false,
-      title: 'Heart Token',
+      title: 'Heart App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: kprimaryColor,
-        scaffoldBackgroundColor: Colors.white,
+        primarySwatch: Colors.deepPurple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: WelcomeScreen()
-    )
+      home: MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatelessWidget {
+  // const MyHomePage({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text('Home'),
+      ),
+      body: ListView(
+        children: [
+          SizedBox(
+            height: 200.0,
+            width: double.infinity,
+            child: Carousel(
+              images: [
+                Image.asset('assets/images/bibis.png'),
+                Image.asset('assets/images/family.jpeg'),
+                Image.asset('assets/images/puppies.jpeg'),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
